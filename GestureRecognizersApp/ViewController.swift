@@ -30,20 +30,12 @@ class ViewController: UIViewController {
     
     @objc func handleTouch(recognizer: UIGestureRecognizer) {
         
-        viView.backgroundColor = randomColor()
+        viView.backgroundColor = UIColor.randomColor()
         lbLabel.text = "Tap Gesture"
         
     }
     
-    func randomColor() -> UIColor {
-        
-        return UIColor(
-            red: .random(),
-            green: .random(),
-            blue: .random(),
-            alpha: 1.0)
-    }
-
+   
 
 }
 
@@ -52,6 +44,17 @@ extension CGFloat {
         return CGFloat(arc4random()) / CGFloat(UInt32.max)
     }
     
+}
+
+extension UIColor {
     
+    static func randomColor() -> UIColor {
+        
+        return UIColor(
+            red: .random(),
+            green: .random(),
+            blue: .random(),
+            alpha: 1.0)
+    }
 }
 
