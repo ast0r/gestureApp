@@ -10,11 +10,48 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var viView: UIView!
+    @IBOutlet weak var lbLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        addTapGustere()
+    }
+    
+    //MARK : TAp Gustere
+    func addTapGustere() {
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTouch))
+        gesture.numberOfTapsRequired = 1
+        viView.addGestureRecognizer(gesture)
+        
+    }
+    
+    @objc func handleTouch(recognizer: UIGestureRecognizer) {
+        
+        viView.backgroundColor = randomColor()
+        lbLabel.text = "Tap Gesture"
+        
+    }
+    
+    func randomColor() -> UIColor {
+        
+        return UIColor(
+            red: .random(),
+            green: .random(),
+            blue: .random(),
+            alpha: 1.0)
     }
 
 
+}
+
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+    
+    
 }
 
